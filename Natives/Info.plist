@@ -89,10 +89,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>net.kdt.pojavlauncher.patch.urlscheme</string>
+			<string>com.congcq.pojavpatch.urlscheme</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pojavlauncherpatch</string>
+				<string>pojavpatch</string>
 			</array>
 		</dict>
 	</array>
