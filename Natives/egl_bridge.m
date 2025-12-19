@@ -56,10 +56,6 @@ int pojavInitOpenGL() {
         renderer = @ RENDERER_NAME_GL4ES;
         setenv("POJAVPATCH_RENDERER", renderer.UTF8String, 1);
         set_gl_bridge_tbl();
-    } else if ([renderer isEqualToString:@ RENDERER_NAME_NGG]) {
-        renderer = @RENDERER_NAME_NGG;
-        setenv("POJAVPATCH_RENDERER", renderer.UTF8String, 1);
-        set_gl_bridge_tbl();
     } else if ([renderer isEqualToString:@ RENDERER_NAME_MTL_ANGLE]) {
         renderer = @RENDERER_NAME_MTL_ANGLE;
         set_gl_bridge_tbl();
