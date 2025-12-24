@@ -209,10 +209,10 @@ void init_bypassDyldLibValidation() {
     orig_fcntl = __fcntl;
     char *dyldBase = getDyldBase();
 
-    // I think iOS 18 and below need this
+    // I think iOS 18 and bellow need this
     if (!@available(iOS 26.0, *)) {
         redirectFunction("mmap", mmap, hooked_mmap);
-        redirectFunction("fcntl", fcntl, hooked_fcntl);
+        redirectFunction("fcntl", fcntl, hooked___fcntl);
     }
 
     searchAndPatch("dyld_mmap", dyldBase, mmapSig, sizeof(mmapSig), hooked_mmap);
