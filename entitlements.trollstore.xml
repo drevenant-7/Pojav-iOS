@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
     <key>application-identifier</key>
-    <string>com.congcq.pojavpatch</string>
+    <string>com.drevenant7.pojavios</string>
     <key>get-task-allow</key>
     <true/>
 

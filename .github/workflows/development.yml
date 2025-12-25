@@ -105,26 +105,26 @@ jobs:
       - name: Upload regular ipa
         uses: actions/upload-artifact@main
         with:
-          name: com.congcq.pojavpatch-${{ matrix.platform_name }}.ipa
-          path: artifacts/com.congcq.pojavpatch-*-${{ matrix.platform_name }}.ipa
+          name: com.drevenant7.pojavios-${{ matrix.platform_name }}.ipa
+          path: artifacts/com.drevenant7.pojavios-*-${{ matrix.platform_name }}.ipa
 
       - name: Upload regular tipa
         uses: actions/upload-artifact@main
         with:
-          name: com.congcq.pojavpatch-${{ matrix.platform_name }}-trollstore.tipa
-          path: artifacts/com.congcq.pojavpatch-*-${{ matrix.platform_name }}-trollstore.tipa
+          name: com.drevenant7.pojavios-${{ matrix.platform_name }}-trollstore.tipa
+          path: artifacts/com.drevenant7.pojavios-*-${{ matrix.platform_name }}-trollstore.tipa
 
       - name: Upload slimmed ipa
         uses: actions/upload-artifact@main
         with:
-          name: com.congcq.pojavpatch.slimmed-${{ matrix.platform_name }}.ipa
-          path: artifacts/com.congcq.pojavpatch.slimmed-*-${{ matrix.platform_name }}.ipa
+          name: com.drevenant7.pojavios.slimmed-${{ matrix.platform_name }}.ipa
+          path: artifacts/com.drevenant7.pojavios.slimmed-*-${{ matrix.platform_name }}.ipa
 
       - name: Upload slimmed tipa
         uses: actions/upload-artifact@main
         with:
-          name: com.congcq.pojavpatch.slimmed-${{ matrix.platform_name }}-trollstore.tipa
-          path: artifacts/com.congcq.pojavpatch.slimmed-*-${{ matrix.platform_name }}-trollstore.tipa
+          name: com.drevenant7.pojavios.slimmed-${{ matrix.platform_name }}-trollstore.tipa
+          path: artifacts/com.drevenant7.pojavios.slimmed-*-${{ matrix.platform_name }}-trollstore.tipa
 
       - name: Upload PojavLauncher.dSYM
         uses: actions/upload-artifact@main
