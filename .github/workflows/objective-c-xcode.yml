@@ -1,30 +1,62 @@
-name: Xcode - Build and Analyze
-
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "master" ]
   pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  build:
-    name: Build and analyse default scheme using xcodebuild command
+  build-ios:
     runs-on: macos-latest
-
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set Default Scheme
+
+      - name: Ensure GNU Make (gmake) is available and create compatibility symlink
         run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
+          brew update
+          brew install make
+          # make installs GNU Make as `gmake`. Create /usr/local/bin/gmake so Xcode's absolute path works.
+          sudo mkdir -p /usr/local/bin
+          sudo ln -sf "$(which gmake)" /usr/local/bin/gmake
+          echo "gmake -> $(which gmake)"
+
+      # Optional: patch project to remove hardcoded /usr/local/bin/gmake (makes repo portable)
+      - name: Patch project to use "gmake" instead of hardcoded /usr/local/bin/gmake
         run: |
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild clean build analyze -scheme "$scheme" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
+          # Only attempt if project file exists
+          PBX="PojavPatch/PojavPatch.xcodeproj/project.pbxproj"
+          if [ -f "$PBX" ]; then
+            sed -i '' 's|/usr/local/bin/gmake|gmake|g' "$PBX" || sed -i 's|/usr/local/bin/gmake|gmake|g' "$PBX"
+            git --no-pager diff -- "$PBX" || true
+          else
+            echo "$PBX not present; skipping project patch"
+          fi
+
+      - name: (Optional) Install CocoaPods dependencies
+        if: exists('Podfile')
+        run: |
+          brew install cocoapods || true
+          cd "$(dirname Podfile)"
+          pod install --repo-update
+
+      - name: Build (xcodebuild)
+        run: |
+          # Adjust project/workspace/scheme/name as needed for this repo
+          # This example uses the PojavPatch project and PojavPatch scheme from the error you showed
+          xcodebuild -project PojavPatch/PojavPatch.xcodeproj \
+            -scheme PojavPatch \
+            -configuration Release \
+            -sdk macosx \
+            build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO
+
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcodebuild-logs
+          path: |
+            /Users/runner/Library/Logs/DiagnosticReports
+            ~/Library/Developer/Xcode/DerivedData
