@@ -73,6 +73,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				km,
 				Base,
 			);
 			mainGroup = 054957C02986E8DC00EFD4CE;
