@@ -85,7 +85,8 @@ Pojav iOS V2 is amazing, and surprisingly stable, and it wouldn't be this way wi
 @zhuowei  
 @jkcoxson   
 @Diatrus  
-@congcq 
+@congcq
+
 @drevenant7
 
 ## Third party components and their licenses
