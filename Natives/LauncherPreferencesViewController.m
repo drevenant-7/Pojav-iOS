@@ -448,9 +448,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 0) { // Add to general section
-        return [NSString stringWithFormat:@"Pojav Patch %@\n%@ on %@\nPID: %d\nបង្កើតដោយ DREVENANT7",
+        return [NSString stringWithFormat:@"Pojav iOS V2 %@\n%@ on %@\nPID: %d\nបង្កើតដោយ DREVENANT7",
             NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"],
-            UIDevice.currentDevice.completeOSVersion, 
+            UIDevice.currentDevice.systemVersion, 
             [HostManager GetModelName],
             getpid()];
     }
