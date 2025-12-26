@@ -7,7 +7,7 @@
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>km</string>
 	<key>CFBundleDisplayName</key>
 	<string>Pojav iOS V2</string>
 	<key>CFBundleExecutable</key>
