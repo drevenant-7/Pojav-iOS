@@ -76,7 +76,7 @@ Pojav Patch makes use of **just-in-time compilation**, or JIT, to provide usable
 In order for Pojav Patch to run even smoother, it's recommended to increase the RAM limit by enabling "Increased Memory Limit." You can enable it by installing [GetMoreRam](https://github.com/hugeBlack/GetMoreRam/releases/download/nightly/Entitlement.ipa) app with your favourite sideloading service. You will need to sign in with the Apple ID you used in AltStore/SideStore and tap "Refresh" in the App-IDs tab. Choose the App-ID of Pojav Patch (or LiveContainer if you're using Pojav Patch in it) and press "Add Increased Memory Limit." After reinstalling Pojav Patch (or LiveContainer), you can see in the logs, or with tools like [Antrag](https://apps.apple.com/app/antrag/id6747074491), if Increased Memory Limit has been enabled successfully. If not, try again.
 
 ## Contributors
-Pojav Patch is amazing, and surprisingly stable, and it wouldn't be this way without the commmunity that helped and contribute to the project! Some notable names:
+Pojav iOS V2 is amazing, and surprisingly stable, and it wouldn't be this way without the commmunity that helped and contribute to the project! Some notable names:
 
 @khanhduytran0 - Lead iOS port developer  
 @crystall1nedev - Lead iOS port developer  
@@ -85,7 +85,8 @@ Pojav Patch is amazing, and surprisingly stable, and it wouldn't be this way wit
 @zhuowei  
 @jkcoxson   
 @Diatrus  
-@congcq  
+@congcq 
+@drevenant7
 
 ## Third party components and their licenses
 - [Caciocavallo](https://github.com/PojavLauncherTeam/caciocavallo): [GNU GPLv2 License](https://github.com/PojavLauncherTeam/caciocavallo/blob/master/LICENSE).
