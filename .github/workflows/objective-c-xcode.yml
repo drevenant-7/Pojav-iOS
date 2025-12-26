@@ -33,8 +33,17 @@ jobs:
             echo "$PBX not present; skipping project patch"
           fi
 
-      - name: (Optional) Install CocoaPods dependencies
-        if: exists('Podfile')
+      - id: podfile-check
+        name: Check for Podfile
+        run: |
+          if [ -f Podfile ]; then
+            echo "podfile_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "podfile_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install CocoaPods dependencies
+        if: ${{ steps.podfile-check.outputs.podfile_exists == 'true' }}
         run: |
           brew install cocoapods || true
           cd "$(dirname Podfile)"
