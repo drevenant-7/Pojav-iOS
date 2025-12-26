@@ -177,7 +177,7 @@ int launchJVM(NSString *username, id launchTarget, int width, int height, int mi
             if (!error) {
                 NSLog(@"[JavaLauncher] Copied libawt_xawt.dylib to %@", dest);
             } else {
-                NSLog(@"[JavaLauncher] Failed to copty libawt_xawt.dylib: %@", error.localizedDescription);
+                NSLog(@"[JavaLauncher] Failed to copy libawt_xawt.dylib: %@", error.localizedDescription);
             }
         }
     }
