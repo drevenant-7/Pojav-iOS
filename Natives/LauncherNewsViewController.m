@@ -46,7 +46,7 @@ UIEdgeInsets insets;
     [webView loadRequest:request];
     [self.view addSubview:webView];
 
-    UIAlertController *welcome = [UIAlertController alertControllerWithTitle:@"Pojav Patch" message:[NSString stringWithFormat:@"%@: %@-%s\nបង្កើតឡើងដោយ DREVENANT7", NSLocalizedString(@"welcome.version", nil), NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"], CONFIG_TYPE] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *welcome = [UIAlertController alertControllerWithTitle:@"Pojav iOS V2" message:[NSString stringWithFormat:@"%@: %@-%s\nបង្កើតឡើងដោយ DREVENANT7", NSLocalizedString(@"welcome.version", nil), NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"], CONFIG_TYPE] preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *closeButton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
     [welcome addAction:closeButton];
