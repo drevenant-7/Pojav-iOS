@@ -173,11 +173,11 @@ int launchJVM(NSString *username, id launchTarget, int width, int height, int mi
         NSString *source = [NSString stringWithFormat:@"%@/Frameworks/libawt_xawt.dylib", NSBundle.mainBundle.bundlePath];
         NSError *error;
         if (![fm fileExistsAtPath:dest]) {
-            [fm createSymbolicLinkAtPath:dest withDestinationPath:source error:&error];
+            [fm copyItemAtPath:source toPath:dest error:&error];
             if (!error) {
-                NSLog(@"[JavaLauncher] Symlink libawt_xawt.dylib successfully!");
+                NSLog(@"[JavaLauncher] Copied libawt_xawt.dylib to %@", dest);
             } else {
-                NSLog(@"[JavaLauncher] Symlink libawt_xawt.dylib failed: %@", error.localizedDescription);
+                NSLog(@"[JavaLauncher] Failed to copy libawt_xawt.dylib: %@", error.localizedDescription);
             }
         }
     }
